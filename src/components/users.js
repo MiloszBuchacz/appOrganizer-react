@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import './users.css';
+import './style/users.css';
 
 class Users extends Component {
     constructor() {
@@ -9,12 +9,6 @@ class Users extends Component {
             users: []
         }
     }
-
-    componentDidMount() {
-        Axios.get("http://localhost:8080/api/users").then((response) => {
-            console.log(response);
-        });
-    };
 
     render() {
         return (

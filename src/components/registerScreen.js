@@ -1,8 +1,8 @@
 import React from 'react';
-// import './LoginStyle.css';
 import Axios from 'axios';
+import './Style/registerScreen.css';
 
-class Login extends React.Component{
+class Register extends React.Component{
   constructor(props){
     super(props)
 
@@ -12,9 +12,8 @@ class Login extends React.Component{
       username: '',
       password: ''
     };
-  
   }
-  
+  //Axios register function
   async onFormSubmit(){
   try {
     const response = await Axios.post('http://localhost:8080/api/auth/signup', {username: this.state.username, password: this.state.password });
@@ -24,17 +23,13 @@ class Login extends React.Component{
   }
 }
 
-
-
-
-
   render(){
       return(
-    <div className="login-wrapper">
-      <h1>Please Log In</h1>
+    <div className="register">
+      <h1>Welcome {this.state.username} to our app</h1>
       <form onSubmit={this.onFormSubmit}>
         <label>
-          <p>Username {this.state.username}</p>
+          <p>Username</p>
           <input type="text" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
         </label>
         <label>
@@ -50,6 +45,4 @@ class Login extends React.Component{
   }
 }
 
-
-
-export default Login;
+export default Register;
