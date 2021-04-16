@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom';
 
 function NavBar() {
     return(
-        <Link to='/registration'>Registration</Link>
+        <button><Link to='/registration'>Registration</Link></button>
+        
         )
 }
 
