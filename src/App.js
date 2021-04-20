@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import './App.css';
 import Register from './components/registerScreen';
 import Home from './components/home';
