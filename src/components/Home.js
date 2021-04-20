@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './logRegNavbar';
+import NavBar from './NavBar';
 
 function Home() {
     return(    

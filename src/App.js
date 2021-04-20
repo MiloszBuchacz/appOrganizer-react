@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import './App.css';
 import Register from './components/registerScreen';
-import Home from './components/home';
+import Home from './components/Home';
 import Login from './components/loginPage';
 
 

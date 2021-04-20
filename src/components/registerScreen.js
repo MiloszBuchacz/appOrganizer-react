@@ -14,7 +14,7 @@ class Register extends React.Component{
       password: ''
     };
   }
-  //Axios register function
+  
   async onFormSubmit(){
   try {
     const response = await Axios.post('http://localhost:8080/api/auth/signup', {username: this.state.username, password: this.state.password });
@@ -26,22 +26,21 @@ class Register extends React.Component{
 
   render(){
       return(
-        <div className="register">
-          <h1>Welcome {this.state.username} to our app</h1>
-          <form onSubmit={this.onFormSubmit}>
-            <label>
-              <p>Username</p>
-              <input type="text" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
-            </label>
-            <label>
-              <p>Password {this.state.password}</p>
-              <input type="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-            </label>
+        <div className="Register">
+        <button className="main-page button">
+            <Link to='/' style={{ textDecoration: 'none' }}>Main Page</Link>
+        </button>
+        <h1>Welcome {this.state.username}</h1>
+        <form onSubmit={this.formSubmit}>            
+            <p>Username</p>
+            <input type="text" value={this.state.username} placeholder="Enter your name" onChange={(e) => this.setState({username: e.target.value})}/>
+            <p>Password</p>
+            <input type="password" value={this.state.password} placeholder="Enter password" onChange={(e) => this.setState({password: e.target.value})}/>
             <div>
-              <button type="submit">Submit</button>
+                <button className="button" type="submit">Submit</button>
             </div>
-          </form>
-        </div>
+        </form>
+    </div>
   )}
 }
 
