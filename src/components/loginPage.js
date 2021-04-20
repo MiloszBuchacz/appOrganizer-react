@@ -31,10 +31,15 @@ class Login extends React.Component{
     //     }
     //   }
 
-    async formSubmit() {
+    async formSubmit(e) {
+        e.preventDefault();
         try {
-        await Axios.post('http://localhost:8080/api/auth/signin', {username: this.state.username, password: this.state.password})
-        .then(alert("ochujałeś xDDDDDD"))
+        const { data } = await Axios.post('http://localhost:8080/api/auth/signin', {username: this.state.username, password: this.state.password});
+        console.log(data);
+        if (data && data.accessToken){
+            localStorage.setItem("token", data.accessToken);
+        }
+
     } catch (err){
         console.log(err);
     }
@@ -50,14 +55,11 @@ class Login extends React.Component{
                 </div>
                 <h1>Hello {this.state.username}, please log in </h1>
                 <form onSubmit={this.formSubmit}>
-                    <label>
-                        <p>Username</p>
-                        <input type="text" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
-                    </label>
-                    <label>
-                        <p>Password</p>
-                        <input type="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-                    </label>
+                    
+                        Username
+                        <input type="text" value={this.state.username} placeholder="username" onChange={(e) => this.setState({username: e.target.value})}/>
+                        Password
+                        <input type="password" value={this.state.password} placeholder="password" onChange={(e) => this.setState({password: e.target.value})}/>
                         <div>
                             <button type="submit">Submit</button>
                         </div>
