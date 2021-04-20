@@ -1,5 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
+import {Link} from 'react-router-dom';
+import './Style/loginScreen.css';
 
 class Login extends React.Component{
     constructor(props){
@@ -18,7 +20,9 @@ class Login extends React.Component{
     //     try {
     //       const response = await Axios.post('http://localhost:8080/api/auth/signin', {username: this.state.username, password: this.state.password })
     //       .then(response => {
-    //           localStorage.setItem("id", JSON.stringify(response.data));
+    //           localStorage.setItem("id", JSON.stringify(response.data),
+    //           alert("gówno xD"),
+    //           console.log(response));
     //       })
     //       console.log('Returned data:', response);
 
@@ -27,15 +31,25 @@ class Login extends React.Component{
     //     }
     //   }
 
-    formSubmit = () => {
-        const data = Axios.post('http://localhost:8080/api/auth/signin', {username: this.state.username, password: this.state.password})
-        .then(console.log(data));
+    async formSubmit() {
+        try {
+        await Axios.post('http://localhost:8080/api/auth/signin', {username: this.state.username, password: this.state.password})
+        .then(alert("ochujałeś xDDDDDD"))
+    } catch (err){
+        console.log(err);
+    }
+
     }
 
 
     render(){
         return(
             <div className="register">
+                <div className="main-menu">
+                    <button>
+                        <Link to='/'>Main Page</Link>
+                    </button>
+                </div>
                 <h1>Hello {this.state.username}, please log in </h1>
                 <form onSubmit={this.formSubmit}>
                     <label>

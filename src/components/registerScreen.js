@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import './Style/registerScreen.css';
+import {Link} from 'react-router-dom';
 
 class Register extends React.Component{
   constructor(props){
@@ -26,6 +27,11 @@ class Register extends React.Component{
   render(){
       return(
     <div className="register">
+      <div className="main-menu">
+        <button>
+          <Link to='/'>Main Page</Link>
+        </button>
+      </div>
       <h1>Welcome {this.state.username} to our app</h1>
       <form onSubmit={this.onFormSubmit}>
         <label>
