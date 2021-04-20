@@ -26,29 +26,23 @@ class Register extends React.Component{
 
   render(){
       return(
-    <div className="register">
-      <div className="main-menu">
-        <button>
-          <Link to='/'>Main Page</Link>
-        </button>
-      </div>
-      <h1>Welcome {this.state.username} to our app</h1>
-      <form onSubmit={this.onFormSubmit}>
-        <label>
-          <p>Username</p>
-          <input type="text" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
-        </label>
-        <label>
-          <p>Password</p>
-          <input type="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-        </label>
-        <div>
-          <button type="submit">Submit</button>
+        <div className="register">
+          <h1>Welcome {this.state.username} to our app</h1>
+          <form onSubmit={this.onFormSubmit}>
+            <label>
+              <p>Username</p>
+              <input type="text" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
+            </label>
+            <label>
+              <p>Password {this.state.password}</p>
+              <input type="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+            </label>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
-  )
-  }
+  )}
 }
 
 export default Register;
