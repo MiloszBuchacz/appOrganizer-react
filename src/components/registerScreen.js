@@ -1,9 +1,9 @@
-import React from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
+import Axios from 'axios';
 import './Style/registerScreen.css';
 import {Link} from 'react-router-dom';
 
-class Register extends React.Component{
+class Register extends Component{
   constructor(props){
     super(props)
 
@@ -15,12 +15,14 @@ class Register extends React.Component{
     };
   }
 
-  async onFormSubmit(){
+  async onFormSubmit(e){
+    e.preventDefault();
   try {
-    const response = await axios.post('http://localhost:8080/api/auth/signup', {username: this.state.username, password: this.state.password });
-    console.log('Returned data:', response);
-  } catch (e) {
-    console.log(`Axios request failed: ${e}`);
+    const { data } = await Axios.post('http://localhost:8080/api/auth/signup', {username: this.state.username, password: this.state.password });
+    console.log(data);
+    this.props.history.push('/user');
+  } catch (err) {
+    console.log(`Axios request failed: ${err}`);
   }
 }
 
@@ -31,7 +33,7 @@ class Register extends React.Component{
             <Link to='/' style={{ textDecoration: 'none' }}>Main Page</Link>
         </button>
         <h1>Welcome {this.state.username}</h1>
-        <form onSubmit={this.formSubmit}>            
+        <form onSubmit={this.onFormSubmit}>            
             <p>Username</p>
             <input type="text" value={this.state.username} placeholder="Enter your name" onChange={(e) => this.setState({username: e.target.value})}/>
             <p>Password</p>

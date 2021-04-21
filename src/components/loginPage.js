@@ -22,9 +22,10 @@ class Login extends Component{
         console.log(data);
         if (data && data.accessToken){
             localStorage.setItem("token", data.accessToken);
+            localStorage.setItem("id", data.id);  
         }
         if (data.accessToken === localStorage.getItem("token")){
-            this.props.history.push('/');
+            this.props.history.push('/user');
         }
     } catch (err){
         console.log(err);
