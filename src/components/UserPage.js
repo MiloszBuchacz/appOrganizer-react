@@ -16,9 +16,8 @@ class UserPage extends Component{
     }
     async addNote(e) {
         e.preventDefault();
-        const id = localStorage.getItem("id");
         try{
-        const { data } = await axios.post('http://localhost:8080/api/notes', {name: this.state.name, body: this.state.body, _userId: id});
+        const { data } = await axios.post('http://localhost:8080/api/notes', {name: this.state.name, body: this.state.body}, {headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}});
         console.log("name:", data.name, "body:", data.body);
         } catch(err){
             console.log(err);
