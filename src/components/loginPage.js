@@ -23,11 +23,14 @@ class Login extends Component{
         if (data && data.accessToken){
             localStorage.setItem("token", data.accessToken);
         }
+        if (data.accessToken === localStorage.getItem("token")){
+            this.props.history.push('/');
+        }
     } catch (err){
         console.log(err);
     }
 }
-
+    
     render(){
         return(
             <div className="Login">

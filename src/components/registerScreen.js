@@ -17,7 +17,7 @@ class Register extends React.Component{
 
   async onFormSubmit(){
   try {
-    const response = await Axios.post('http://localhost:8080/api/auth/signup', {username: this.state.username, password: this.state.password });
+    const response = await axios.post('http://localhost:8080/api/auth/signup', {username: this.state.username, password: this.state.password });
     console.log('Returned data:', response);
   } catch (e) {
     console.log(`Axios request failed: ${e}`);
