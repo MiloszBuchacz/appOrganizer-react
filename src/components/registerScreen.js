@@ -1,5 +1,5 @@
 import React from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import './Style/registerScreen.css';
 import {Link} from 'react-router-dom';
 
@@ -11,10 +11,10 @@ class Register extends React.Component{
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
     };
   }
-  
+
   async onFormSubmit(){
   try {
     const response = await Axios.post('http://localhost:8080/api/auth/signup', {username: this.state.username, password: this.state.password });
