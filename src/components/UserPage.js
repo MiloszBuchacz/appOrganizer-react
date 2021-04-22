@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import NoteButton from './UserPageComponents/NoteButton';
+//import NoteButton from './UserPageComponents/NoteButton';
 import './Style/userPage.css';
 
 
@@ -9,6 +9,7 @@ class UserPage extends Component{
         super(props)
 
         this.addNote = this.addNote.bind(this);
+       // this.callBack = this.callBack.bind(this);
 
 
         this.state = {
@@ -16,7 +17,10 @@ class UserPage extends Component{
             body: ''
         }
     }
-
+    // callBack = (name) => {
+    //     this.setState({name: name})
+    //     console.log(name);
+    // }
     
 
     async addNote(e) {
@@ -34,7 +38,15 @@ class UserPage extends Component{
     render(){
         return(
             <div>
-                <NoteButton />
+                <form onSubmit={this.addNote}>
+                    <h1>Welcome</h1>
+                    Make a Note
+                    <input type="text" value={this.state.name} placeholder="Enter your name" onChange={(e) => this.setState({name: e.target.value})} />
+                    Body:
+                    <input className="body" type="text" value={this.state.body} placeholder="Enter your name" onChange={(e) => this.setState({body: e.target.value})} />
+                    <button className="button" type="submit">zapisz</button>
+                </form>
+
             </div> 
         )}
 }
