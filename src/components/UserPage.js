@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import './Style/userPage.css'
+import NoteButton from './UserPageComponents/NoteButton';
+import './Style/userPage.css';
 
 
 class UserPage extends Component{
@@ -9,30 +10,32 @@ class UserPage extends Component{
 
         this.addNote = this.addNote.bind(this);
 
+
         this.state = {
-            name: 'krupnik',
-            body: 'zupa chuj maczeta'
+            name: '',
+            body: ''
         }
     }
+
+    
+
     async addNote(e) {
         e.preventDefault();
         try{
-        const { data } = await axios.post('http://localhost:8080/api/notes', {name: this.state.name, body: this.state.body}, {headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}});
-        console.log("name:", data.name, "body:", data.body);
+        await axios.post('http://localhost:8080/api/notes', {name: this.state.name, body: this.state.body}, {headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}});
+        console.log("note Added!");
         } catch(err){
             console.log(err);
         }
         
     }
-
+    
 
     render(){
         return(
             <div>
-                <h1>siema ziombal co tam</h1>
-                <button onClick={this.addNote}>Add Note</button>
-            </div>
-        )
-    }
+                <NoteButton />
+            </div> 
+        )}
 }
 export default UserPage;
