@@ -5,7 +5,7 @@ export default function NoteForm({ open, children, onClose }) {
   return (
     <div>
       {children}
-      <button onClick={onClose}>close</button>
+      <button onClick={onClose} style={{marginTop: '450px', marginLeft: "50px"}}>close</button>
     </div>
   );
 }

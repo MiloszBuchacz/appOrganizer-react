@@ -9,7 +9,7 @@ class UserPage extends Component {
 
     this.addNote = this.addNote.bind(this);
     this.getNote = this.getNote.bind(this);
-    this.onClick = this.onClick.bind(this);
+    //this.onClick = this.onClick.bind(this);
 
     this.state = {
       name: "",
@@ -17,16 +17,17 @@ class UserPage extends Component {
       notes: [],
     };
   }
-  componentDidMount() {
-    this.setState({ notes: [{ name: "" }] });
-  }
+  // componentDidMount() {
+  //   this.setState({ notes: [{ name: "" }] });
+  // }
 
-  onClick(text) {
-    this.setState({
-      notes: [...this.state.notes, { id: "id", name: text }]
-    }, console.log(text)
-    );
-  }
+  // onClick(text) {
+  //   this.setState({
+  //     notes: [...this.state.notes, { id: "id", name: text }]
+  //   }, console.log(text)
+  //   );
+  // }
+  
 
   async addNote(e) {
     e.preventDefault();
@@ -61,8 +62,13 @@ class UserPage extends Component {
   render() {
     return (
       <div>
-        <NoteButton onFormSubmit={(name) => this.setState({name: name})} />
-        <p>{this.state.name}</p>
+        <NoteButton
+          addNote={this.addNote}
+          onNameSubmit={(name) => this.setState({name: name})}
+          onBodySubmit={(body) => this.setState({body: body})}
+        />
+        {/* <button onClick={this.addNote}>save</button> */}
+          
       </div>
     );
   }
