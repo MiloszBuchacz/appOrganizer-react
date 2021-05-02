@@ -1,27 +1,33 @@
-// import React, { useState }from 'react'
-// import NoteForm from './NoteForm';
-// import '../Style/noteForm.css';
+import React, { useState } from "react";
+import NoteForm from "./NoteForm";
+import "../Style/noteForm.css";
 
-// export default function NoteButton(e) {
-//     e.preventDefault();
-//     const [isOpen, setIsOpen] = useState(false);
+export default function NoteButton({ onFormSubmit }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [name, setName] = useState("");
 
-//     const onTrigger = (event) => {
-//         this.props.parentCallback({event});
+  const onSubmit = (event) => {
+    event.preventDefault();
 
-//     }
-//     return (
-//         <div>
-//             <h1>Welcome</h1>
-//             <button className="add-note" onClick={() => setIsOpen(true)}>Make a Note</button>
-//                 <NoteForm open={isOpen} onClose={() => setIsOpen(false)}>
-//                     <div>
-//                         <form onSubmit={onTrigger}>
-//                             Name the note:
-//                             <input type="text"  placeholder="Enter your name" onChange={(e) => ({name: e.target.value})}/>
-//                         </form>
-//                     </div>
-//                 </NoteForm>
-//         </div>
-//     )
-// }
+    onFormSubmit(name);
+  };
+
+  return (
+    <div>
+      <h1>Welcome</h1>
+      <button className="add-note" onClick={() => setIsOpen(true)}>
+        Make a Note
+      </button>
+      <NoteForm open={isOpen} onClose={() => setIsOpen(false)}>
+        <form onSubmit={onSubmit}>
+          Name the Note:
+          <input
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </form>
+      </NoteForm>
+    </div>
+  );
+}
