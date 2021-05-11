@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import AddNoteForm from "./UserPageComponents/AddNoteForm";
 import GetNote from './UserPageComponents/GetNote';
+import UpdateNote from './UserPageComponents/UpdateNote';
 import "./Style/userPage.css";
 
 class UserPage extends Component {
@@ -10,7 +11,6 @@ class UserPage extends Component {
 
     this.addNote = this.addNote.bind(this);
     this.getNote = this.getNote.bind(this);
-    //this.onClick = this.onClick.bind(this);
 
     this.state = {
       name: "",
@@ -18,17 +18,6 @@ class UserPage extends Component {
       notes: [],
     };
   }
-  // componentDidMount() {
-  //   this.setState({ notes: [{ name: "" }] });
-  // }
-
-  // onClick(text) {
-  //   this.setState({
-  //     notes: [...this.state.notes, { id: "id", name: text }]
-  //   }, console.log(text)
-  //   );
-  // }
-  
 
   async addNote(e) {
     e.preventDefault();
@@ -53,10 +42,24 @@ class UserPage extends Component {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       this.setState({ ...this.state, notes: data });
-      console.log(data);
-      console.log(this.state.notes);
+      // console.log(data);
+      // console.log(this.state.notes);
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  async updateNote(e) {
+    e.preventDefault();
+    try {
+      await axios.put("http://localhost:8080/api/notes",
+       { name: this.state.name, body: this.state.body }, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      console.log('duppka')
+    }
+    catch (error) {
+      console.log(error);
     }
   }
 
@@ -67,26 +70,32 @@ class UserPage extends Component {
           <AddNoteForm
             className="note-form"
             addNote={this.addNote}
-            onNameSubmit={(name) => this.setState({name: name})}
-            onBodySubmit={(body) => this.setState({body: body})}
-          /> 
-          <GetNote className="get-form"/>
-        </div>
-        <div>
+            onNameSubmit={(name) => this.setState({ name: name })}
+            onBodySubmit={(body) => this.setState({ body: body })}
+          />
+
+          <GetNote className="get-form"
+            getNote={this.getNote}
+            notes={this.state.notes}
+          />
+
+          {/* <UpdateNote className="update-form" 
+
+          
+          /> */}
 
         </div>
-
       </div>
     );
   }
 }
 export default UserPage;
 
-// <div>
-// <ul>
-//   {this.state.notes &&
-//     this.state.notes.map((item) => {
-//       return <p key={item.id}>{item.name}</p>;
-//     })}
-// </ul>
-// </div>
+{/* <div>
+<ul>
+  {this.state.notes &&
+    this.state.notes.map((item) => {
+      return <p key={item.id}>{item.name}</p>;
+    })}
+</ul>
+</div> */}

@@ -28,7 +28,6 @@ export default function NoteButton({ onNameSubmit, onBodySubmit, addNote }) {
       </button>
       <NoteForm open={isOpen} onClose={() => setIsOpen(false)}>
         <form onChange={onSubmit}>
-          {/* <p>Name the Note:</p> */}
           <input
             placeholder="Name the Note"
             className="name-input"
@@ -37,8 +36,7 @@ export default function NoteButton({ onNameSubmit, onBodySubmit, addNote }) {
             onChange={(event) => setName(event.target.value)}
           />
         </form>
-        <form style={{ marginTop: "100px" }} onChange={onSubmit}>
-          {/* <p className="bodyP">add note</p> */}
+        <form onChange={onSubmit}>
           <input
             placeholder="enter Note"
             className="body"
