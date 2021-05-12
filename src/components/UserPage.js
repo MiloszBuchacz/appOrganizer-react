@@ -11,10 +11,12 @@ class UserPage extends Component {
 
     this.addNote = this.addNote.bind(this);
     this.getNote = this.getNote.bind(this);
+    this.updateNote = this.updateNote.bind(this);
 
     this.state = {
       name: "",
       body: "",
+      id: "",
       notes: [],
     };
   }
@@ -24,7 +26,7 @@ class UserPage extends Component {
     try {
       await axios.post(
         "http://localhost:8080/api/notes",
-        { name: this.state.name, body: this.state.body },
+        { id: this.state.id, name: this.state.name, body: this.state.body },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -52,7 +54,7 @@ class UserPage extends Component {
   async updateNote(e) {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8080/api/notes",
+      await axios.put(`http://localhost:8080/api/notes/${this.state.id}`,
        { name: this.state.name, body: this.state.body }, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
@@ -76,14 +78,13 @@ class UserPage extends Component {
           />
 
           <GetNote className="get-form"
+            updateNote={this.updateNote}
             getNote={this.getNote}
             notes={this.state.notes}
+            noteIdUpdate={(id) => this.setState({id: id})}
+            noteNameUpdate={(name) => this.setState({name: name})}
+            noteBodyUpdate={(body) => this.setState({body: body})}
           />
-
-          {/* <UpdateNote className="update-form" 
-
-          
-          /> */}
 
         </div>
       </div>
@@ -91,12 +92,3 @@ class UserPage extends Component {
   }
 }
 export default UserPage;
-
-{/* <div>
-<ul>
-  {this.state.notes &&
-    this.state.notes.map((item) => {
-      return <p key={item.id}>{item.name}</p>;
-    })}
-</ul>
-</div> */}
