@@ -1,16 +1,14 @@
 .body{
-  display:inline-block;
-  padding:150px 10px;
-  line-height:140%;
+
 }
 .buttons{
-  display:flex;
-  flex-direction:row;
+  display: inline;
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 0;
 }
 .note-form{
-  position: relative;
-  margin-left: 200%;
 }
 .get-form{
-  position: static;
+
 }

@@ -22,7 +22,6 @@ export default function NoteButton({ onNameSubmit, onBodySubmit, addNote }) {
 
   return (
     <div className="add-note">
-      <h1>Welcome</h1>
       <button onClick={() => setIsOpen(true)}>
         Make a Note
       </button>

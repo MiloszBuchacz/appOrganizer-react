@@ -66,6 +66,7 @@ class UserPage extends Component {
   render() {
     return (
       <div>
+        <h1>Welcome</h1>
         <div className="buttons">
           <AddNoteForm
             className="note-form"
