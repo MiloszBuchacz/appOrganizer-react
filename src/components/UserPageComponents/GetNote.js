@@ -4,12 +4,12 @@ import UpdateNote from './UpdateNote';
 import DeleteNote from './DeleteNote';
 import '../Style/getNote.css';
 
-export default function GetNote({ notes, getNote, updateNote, noteDelete, noteNameUpdate, noteBodyUpdate, noteId }) {
+export default function GetNote({ notes, getNote, updateNote, deleteNote, noteNameUpdate, noteBodyUpdate, noteId}) {
   const [isOpen, setIsOpen] = useState(false);
   const [buttonOpen, setOpen] = useState(false);
   const [checkOpen, setCheckOpen] = useState(false);
   const [upadateOpen, setUpdateOpen] = useState(false);
-  const [deleteNote, setDeleteOpen] = useState(false);
+  const [delNote, setDeleteOpen] = useState(false);
 
   const nameArr = [];
 
@@ -61,9 +61,10 @@ export default function GetNote({ notes, getNote, updateNote, noteDelete, noteNa
               onIdSubmit={noteId}
             />
           </NoteForm>
-          <NoteForm className="" open={deleteNote} onClose={() => setDeleteOpen(false)} >
+          <NoteForm className="" open={delNote} onClose={() => setDeleteOpen(false)} >
             <DeleteNote
-              noteData={noteDelete}
+              noteDelete={deleteNote}
+              onIdSubmit={noteId}
             />
           </NoteForm>
           <NoteForm open={checkOpen} onClose={() => setCheckOpen(false)}>
