@@ -37,6 +37,20 @@ class UserPage extends Component {
     }
   }
 
+  async deleteNote(e) {
+    try {
+      await axios.delete(`http://localhost:8080/api/notes/${this.state.id}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+        }
+      )
+      console.log("note deleted.")
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
   async getNote(e) {
     e.preventDefault();
     try {
@@ -55,7 +69,7 @@ class UserPage extends Component {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:8080/api/notes/${this.state.id}`,
-       { name: this.state.name, body: this.state.body }, {
+        { name: this.state.name, body: this.state.body }, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       console.log('duppka')
@@ -79,11 +93,12 @@ class UserPage extends Component {
 
           <GetNote className="get-form"
             updateNote={this.updateNote}
+            noteDelete={this.deleteNote}
             getNote={this.getNote}
             notes={this.state.notes}
-            noteIdUpdate={(id) => this.setState({id: id})}
-            noteNameUpdate={(name) => this.setState({name: name})}
-            noteBodyUpdate={(body) => this.setState({body: body})}
+            noteId={(id) => this.setState({ id: id })}
+            noteNameUpdate={(name) => this.setState({ name: name })}
+            noteBodyUpdate={(body) => this.setState({ body: body })}
           />
 
         </div>

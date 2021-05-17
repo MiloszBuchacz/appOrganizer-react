@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import NoteForm from "./NoteForm";
 import UpdateNote from './UpdateNote';
+import DeleteNote from './DeleteNote';
 import '../Style/getNote.css';
 
-export default function GetNote({ notes, getNote, updateNote, noteNameUpdate, noteBodyUpdate, noteIdUpdate }) {
+export default function GetNote({ notes, getNote, updateNote, noteDelete, noteNameUpdate, noteBodyUpdate, noteId }) {
   const [isOpen, setIsOpen] = useState(false);
   const [buttonOpen, setOpen] = useState(false);
   const [checkOpen, setCheckOpen] = useState(false);
   const [upadateOpen, setUpdateOpen] = useState(false);
+  const [deleteNote, setDeleteOpen] = useState(false);
 
   const nameArr = [];
 
@@ -36,9 +38,8 @@ export default function GetNote({ notes, getNote, updateNote, noteNameUpdate, no
   })
 
   return (
-
     <div>
-      <button className="get-note" onClick={() => setIsOpen(true)}>
+      <button className="" onClick={() => setIsOpen(true)}>
         notes here
         </button>
       <NoteForm className="get-note" open={isOpen} onClose={() => setIsOpen(false)}>
@@ -46,21 +47,30 @@ export default function GetNote({ notes, getNote, updateNote, noteNameUpdate, no
           <button onClick={() => setUpdateOpen(true)}>
             update Note
           </button>
-          <NoteForm open={upadateOpen} onClose={() => setUpdateOpen(false)}>
-            <UpdateNote 
-              noteUpdate={updateNote}
-              onSubmitName={noteNameUpdate}
-              onSubmitBody={noteBodyUpdate}
-              onIdSubmit={noteIdUpdate}
-              />
-          </NoteForm>
+          <button onClick={() => setDeleteOpen(true)}>
+            delete it! NOW!
+          </button>
           <button onClick={twoInOne}>
             check note
           </button>
+          <NoteForm open={upadateOpen} onClose={() => setUpdateOpen(false)}>
+            <UpdateNote
+              noteUpdate={updateNote}
+              onSubmitName={noteNameUpdate}
+              onSubmitBody={noteBodyUpdate}
+              onIdSubmit={noteId}
+            />
+          </NoteForm>
+          <NoteForm className="" open={deleteNote} onClose={() => setDeleteOpen(false)} >
+            <DeleteNote
+              noteData={noteDelete}
+            />
+          </NoteForm>
           <NoteForm open={checkOpen} onClose={() => setCheckOpen(false)}>
             {nameArr}
           </NoteForm>
         </div>
+        <NoteForm />
       </NoteForm>
     </div>
   );
