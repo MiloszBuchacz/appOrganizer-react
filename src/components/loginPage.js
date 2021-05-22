@@ -25,6 +25,7 @@ class Login extends Component {
       console.log(data);
       if (data && data.accessToken) {
         localStorage.setItem("token", data.accessToken);
+        localStorage.setItem("name", this.state.username);
       }
       if (data.accessToken === localStorage.getItem("token")) {
         this.props.history.push("/user");
@@ -36,16 +37,21 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <button className="main-page button">
-          <Link to="/" style={{ textDecoration: "none" }}>
-            Main Page
-          </Link>
-        </button>
-        <h1>Hello {this.state.username} please log in </h1>
+      <div className="body">
+        <nav>
+          <button className="main-page button">
+            <span>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                Main Page
+                </Link>
+            </span>
+          </button>
+        </nav>
+        <h1>Greetings {localStorage.getItem("name")} </h1>
         <form onSubmit={this.formSubmit}>
           <p>Username</p>
           <input
+            className="inputName"
             type="text"
             value={this.state.username}
             placeholder="Enter your name"
@@ -53,6 +59,7 @@ class Login extends Component {
           />
           <p>Password</p>
           <input
+            className="inputPassword"
             type="password"
             value={this.state.password}
             placeholder="Enter password"
@@ -60,7 +67,9 @@ class Login extends Component {
           />
           <div>
             <button className="button" type="submit">
-              Submit
+              <span>
+                Submit
+                </span>
             </button>
           </div>
         </form>

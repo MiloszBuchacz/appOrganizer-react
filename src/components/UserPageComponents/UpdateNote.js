@@ -16,7 +16,7 @@ export default function UpdateNote({ noteUpdate, onSubmitBody, onSubmitName, onI
   }
 
   return (
-    <div>
+    <div className="body">
       <form onChange={submitForm}>
         copy note ID here:
       <input

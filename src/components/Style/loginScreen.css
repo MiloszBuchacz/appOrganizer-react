@@ -1,41 +1,118 @@
-form{
-    font-style:unset;
-    display: flex;
-    flex-direction: column;
-    margin-left: 44%;
-    margin-right: 44%;
-    height: 30px;
-}
+
 input {
-    height: 30px;
-    margin-bottom: 30px;
-    border: 2px solid cornflowerblue;
-    border-radius: 25px;
-    box-shadow: lightgray;
+    padding:10px; 
+    border:2px solid rgb(255, 255, 255); 
+    -webkit-border-radius: 5px;
+    border-radius: 15px;
+    outline: none;
+    transition: 0.5s;
+}
+.inputName{
+    margin-bottom: 7%;
+    margin-top: -60px;
+}
+.inputPassword{
+    margin-bottom: 2%;
 }
 h1{
-    font-style: unset;
-    opacity: 0.8;
-    font-size: 350%;
+    font-family: monospace;
+    font-size: 42px;
+}
+
+input:focus {
+    border-color:#3527ff;
 }
 p{
-    opacity: 0.8;
+    margin-top: -4%;
+    font-family: monospace;
 }
-.main-page{
-    margin-left: 80%;
+form{
+    margin-top: 10%;
 }
+.registration{
+    margin-right: 15%;
+}
+.login{
+    margin-top: -60px;
+    margin-left: 15%;
+}
+
 .button{
-    font-family: inherit;
-    font-size: 14px;
-    border-radius: 25px;
-    width: 100px;
+    border-radius: 4px;
+    background-color: #ffffff;
     border: none;
+    color:#5145ff;
+    text-align: center;
+    font-size: 15px;
+    padding: 15px;
+    transition: all 0.5s;
     cursor: pointer;
-    transition-duration: 0.8;
-    background-color: rgba(0, 77, 77, 0.548);
+    margin: 5px;
+    font-family: monospace;
+    
 }
-.button:hover{
-    background-color: rgba(0, 77, 77, 0.548);
+
+.main-page{
+    border-radius: 4px;
+    background-color: #ffffff;
     border: none;
+    color: #5145ff;
+    text-align: center;
+    font-size: 15px;
+    padding: 15px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    margin-left: 75%;
+    font-family: monospace;
+    
 }
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+.body{
+    animation: fadeInAnimation ease 1.5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+}
+
+  a:link { text-decoration: none; }
+  a:visited { text-decoration: none; }
+  a:hover { text-decoration: none; }
+  a:active { text-decoration: none; }
+
+/* .topBox{
+    background-color: rgb(0, 0, 0);
+    height: 60px;
+
+} */
 

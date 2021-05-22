@@ -4,7 +4,7 @@ import UpdateNote from './UpdateNote';
 import DeleteNote from './DeleteNote';
 import '../Style/getNote.css';
 
-export default function GetNote({ notes, getNote, updateNote, deleteNote, noteNameUpdate, noteBodyUpdate, noteId}) {
+export default function GetNote({ notes, getNote, updateNote, deleteNote, noteNameUpdate, noteBodyUpdate, noteId }) {
   const [isOpen, setIsOpen] = useState(false);
   const [buttonOpen, setOpen] = useState(false);
   const [checkOpen, setCheckOpen] = useState(false);
@@ -28,7 +28,7 @@ export default function GetNote({ notes, getNote, updateNote, deleteNote, noteNa
   notes.forEach(element => {
     nameArr.push(
       <div>
-        <button className="buttons" onClick={() => setOpen(true)} key={element.id}>{element.name}</button>
+        <button className="button" onClick={() => setOpen(true)} key={element.id}>{element.name}</button>
         <NoteForm className="buttons-body" open={buttonOpen} onClose={() => setOpen(false)}>
           <p>{element._id}</p>
           <p>{element.body}</p>
@@ -39,9 +39,11 @@ export default function GetNote({ notes, getNote, updateNote, deleteNote, noteNa
 
   return (
     <div>
-      <button className="" onClick={() => setIsOpen(true)}>
-        notes here
-        </button>
+      <button className="button" onClick={() => setIsOpen(true)}>
+        <span>
+          notes here
+        </span>
+      </button>
       <NoteForm className="get-note" open={isOpen} onClose={() => setIsOpen(false)}>
         <div className="body" >
           <button onClick={() => setUpdateOpen(true)}>

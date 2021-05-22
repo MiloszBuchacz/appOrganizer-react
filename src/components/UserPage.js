@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import AddNoteForm from "./UserPageComponents/AddNoteForm";
 import GetNote from './UserPageComponents/GetNote';
 import "./Style/userPage.css";
+import {Link} from 'react-router-dom';
 
 class UserPage extends Component {
   constructor(props) {
@@ -38,10 +39,9 @@ class UserPage extends Component {
   }
 
   async deleteNotes(e) {
-    e.preventDefault();
     try {
       await axios.delete(
-        `http://localhost:8080/api/notes/${this.state.id}`,
+        `http://localhost:8080/api/notes/${e}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
         }
@@ -70,8 +70,8 @@ class UserPage extends Component {
     try {
       await axios.put(
         `http://localhost:8080/api/notes/${this.state.id}`,
-        { 
-          name: this.state.name, body: this.state.body 
+        {
+          name: this.state.name, body: this.state.body
         }, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
@@ -85,8 +85,17 @@ class UserPage extends Component {
   render() {
     return (
       <div>
+        <nav>
+          <button className="main-page button">
+            <span>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                Main Page
+                </Link>
+            </span>
+          </button>
+        </nav>
         <h1>Welcome</h1>
-        <div className="buttons">
+
           <AddNoteForm
             className="note-form"
             addNote={this.addNote}
@@ -96,15 +105,14 @@ class UserPage extends Component {
 
           <GetNote className="get-form"
             updateNote={this.updateNote}
-            deleteNote={this.deleteNotes}
+            deleteNote={(id) => this.deleteNotes(id)}
             getNote={this.getNote}
             notes={this.state.notes}
-            // delId={(id) => this.setState({id: id})}
-            noteId={(id) => this.setState({ id: id })}
+            noteId={(id) => console.log("gufno", id)}
             noteNameUpdate={(name) => this.setState({ name: name })}
             noteBodyUpdate={(body) => this.setState({ body: body })}
           />
-        </div>
+
       </div>
     );
   }
