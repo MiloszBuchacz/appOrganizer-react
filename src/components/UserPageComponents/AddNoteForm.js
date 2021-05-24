@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NoteForm from "./NoteForm";
+import NoteForm from "./ShowHideWrapper";
 import "../Style/loginScreen.css";
 
 export default function NoteButton({ onNameSubmit, onBodySubmit, addNote }) {
@@ -22,12 +22,12 @@ export default function NoteButton({ onNameSubmit, onBodySubmit, addNote }) {
 
   return (
     <div className="add-note">
-      <button className="button" onClick={() => setIsOpen(true)}>
+      {/* <button className="button" onClick={() => setIsOpen(true)}>
         <span>
           Make a Note
         </span>
-      </button>
-      <NoteForm open={isOpen} onClose={() => setIsOpen(false)}>
+      </button> */}
+      <NoteForm title="add note">
         <form onChange={onSubmit}>
           <p>Name the Note</p>
           <input

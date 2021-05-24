@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import NoteForm from "./NoteForm";
+import React, { useEffect, useState } from "react";
+import NoteForm from "./ShowHideWrapper";
 import UpdateNote from './UpdateNote';
 import DeleteNote from './DeleteNote';
 import '../Style/getNote.css';
@@ -13,49 +13,57 @@ export default function GetNote({ notes, getNote, updateNote, deleteNote, noteNa
 
   const nameArr = [];
 
-  const gettingNote = (event) => {
-    event.preventDefault();
-    getNote(event);
-    console.log("pobrałem")
-  }
+  // const gettingNote = (event) => {
+  //   //event.preventDefault();
+  //   getNote(event);
+  //   console.log("pobrałem")
+  // }
 
-  const twoInOne = (e) => {
-    e.preventDefault();
-    setCheckOpen(true);
-    gettingNote(e);
-  }
+  // const twoInOne = (e) => {
+  //   e.preventDefault();
+  //   setCheckOpen(true);
+  //   gettingNote(e);
+  // }
+useEffect(() => {
+  getNote();
+});
 
-  notes.forEach(element => {
-    nameArr.push(
-      <div>
-        <button className="button" onClick={() => setOpen(true)} key={element.id}>{element.name}</button>
-        <NoteForm className="buttons-body" open={buttonOpen} onClose={() => setOpen(false)}>
-          <p>{element._id}</p>
-          <p>{element.body}</p>
-        </NoteForm>
-      </div>
-    )
-  })
+notes.forEach(element => {
+  nameArr.push(
+    <div className="buttons-body" >
+      <NoteForm className="single" title={element.name}>
+        note id:
+        <p className="not-elem-id" >{element._id}</p>
+        note body:
+        <p className="note-elem-body" >{element.body}</p>
+      </NoteForm>
+    </div>
+  )
+})
+
+  // notes.forEach(element => {
+  //   nameArr.push(
+  //     <div>
+  //       <button className="button" onClick={() => setOpen(true)} key={element.id}>{element.name}</button>
+  //       <NoteForm className="buttons-body" title="body buttons">
+  //         <p>{element._id}</p>
+  //         <p>{element.body}</p>
+  //       </NoteForm>
+  //     </div>
+  //   )
+  // })
 
   return (
     <div>
-      <button className="button" onClick={() => setIsOpen(true)}>
+      {/* <button className="button" >
         <span>
-          notes here
+          szalom
         </span>
-      </button>
-      <NoteForm className="get-note" open={isOpen} onClose={() => setIsOpen(false)}>
+      </button> */}
+      <NoteForm className="get-note" title="notes here" >
         <div className="body" >
-          <button onClick={() => setUpdateOpen(true)}>
-            update Note
-          </button>
-          <button onClick={() => setDeleteOpen(true)}>
-            delete it! NOW!
-          </button>
-          <button onClick={twoInOne}>
-            check note
-          </button>
-          <NoteForm open={upadateOpen} onClose={() => setUpdateOpen(false)}>
+
+          <NoteForm title="update note" >
             <UpdateNote
               noteUpdate={updateNote}
               onSubmitName={noteNameUpdate}
@@ -63,17 +71,16 @@ export default function GetNote({ notes, getNote, updateNote, deleteNote, noteNa
               onIdSubmit={noteId}
             />
           </NoteForm>
-          <NoteForm className="" open={delNote} onClose={() => setDeleteOpen(false)} >
+          <NoteForm className="" title="delete note" >
             <DeleteNote
               noteDelete={deleteNote}
               onIdSubmit={noteId}
             />
           </NoteForm>
-          <NoteForm open={checkOpen} onClose={() => setCheckOpen(false)}>
+          <NoteForm className="notes" title="my notes">
             {nameArr}
           </NoteForm>
         </div>
-        <NoteForm />
       </NoteForm>
     </div>
   );

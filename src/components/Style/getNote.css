@@ -4,7 +4,7 @@
 .body{
 
 }
-.button{
+button{
     border-radius: 4px;
     background-color: #ffffff;
     border: none;
@@ -19,16 +19,27 @@
     
 }
 .buttons-body{
-
+  display: -webkit-inline-box;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  position: relative;
 }
-.button span {
+
+.not-elem-id{
+  margin-bottom: 10%;
+  margin-left: 30%;
+  margin-top: 50%;
+}
+
+
+button span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
   }
 
-  .button span:after {
+  button span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -37,11 +48,11 @@
     transition: 0.5s;
   }
 
-  .button:hover span {
+  button:hover span {
     padding-right: 25px;
   }
   
-  .button:hover span:after {
+   button:hover span:after {
     opacity: 1;
     right: 0;
   }

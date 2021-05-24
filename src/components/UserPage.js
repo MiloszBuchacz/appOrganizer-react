@@ -54,7 +54,7 @@ class UserPage extends Component {
   }
 
   async getNote(e) {
-    e.preventDefault();
+    //e.preventDefault();
     try {
       const { data } = await axios.get("http://localhost:8080/api/notes", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
