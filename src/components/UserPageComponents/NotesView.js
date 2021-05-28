@@ -1,57 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 
-import { getNotes } from '../../api/notesService'
+import {getNotes} from '../../api/notesService'
 import ShowHideWrapper from "./ShowHideWrapper";
+import SingleNoteComponent from '../SingleNoteComponent';
 
 import '../Style/getNote.css';
 
 const NotesView = () => {
-  const [notes, setNotes] = useState([]);
-  
-  const nameArr = [];
+    const [notes, setNotes] = useState([]);
 
-  useEffect( async () => {
-    setNotes(await getNotes());
-  }, []);
+    useEffect(async () => {
+        setNotes(await getNotes());
+    }, []);
 
-
-  notes.forEach(element => {
-    nameArr.push(
-      <div>
-        <button className="button" key={element.id}>{element.name}</button>
-        <ShowHideWrapper className="buttons-body" title="body buttons">
-          <p>{element._id}</p>
-          <p>{element.body}</p>
-        </ShowHideWrapper>
-      </div>
-    )
-  })
-
-  return (
-    <div>
-      <ShowHideWrapper className="get-note" title="notes here" >
-        <div className="body" >
-          {/*<ShowHideWrapper title="update note" >*/}
-          {/*  <UpdateNote*/}
-          {/*    noteUpdate={updateNote}*/}
-          {/*    onSubmitName={noteNameUpdate}*/}
-          {/*    onSubmitBody={noteBodyUpdate}*/}
-          {/*    onIdSubmit={noteId}*/}
-          {/*  />*/}
-          {/*</ShowHideWrapper>*/}
-          {/*<ShowHideWrapper title="delete note" >*/}
-          {/*  <DeleteNote*/}
-          {/*    noteDelete={deleteNote}*/}
-          {/*    onIdSubmit={noteId}*/}
-          {/*  />*/}
-          {/*</ShowHideWrapper>*/}
-          <ShowHideWrapper className="notes" title="my notes" >
-            {nameArr}
-          </ShowHideWrapper>
+    return (
+        <div>
+            <ShowHideWrapper className="get-note" title="notes here">
+                <div className="body">
+                    <ShowHideWrapper className="notes" title="my notes">
+                        {notes.map(note => {
+                            <SingleNoteComponent _id={note._id} body={note.body}/>
+                        })}
+                    </ShowHideWrapper>
+                </div>
+            </ShowHideWrapper>
         </div>
-      </ShowHideWrapper>
-    </div>
-  );
+    );
 }
 
 export default NotesView;
