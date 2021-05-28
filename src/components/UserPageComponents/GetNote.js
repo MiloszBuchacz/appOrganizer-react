@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
-import NoteForm from "./ShowHideWrapper";
+import ShowHideWrapper from "./ShowHideWrapper";
 import UpdateNote from './UpdateNote';
 import DeleteNote from './DeleteNote';
 import '../Style/getNote.css';
 
 export default function GetNote({ notes, getNote, updateNote, deleteNote, noteNameUpdate, noteBodyUpdate, noteId }) {
-  const [isOpen, setIsOpen] = useState(false);
   const [buttonOpen, setOpen] = useState(false);
-  const [checkOpen, setCheckOpen] = useState(false);
-  const [upadateOpen, setUpdateOpen] = useState(false);
-  const [delNote, setDeleteOpen] = useState(false);
 
   const nameArr = [];
 
@@ -24,64 +20,81 @@ export default function GetNote({ notes, getNote, updateNote, deleteNote, noteNa
   //   setCheckOpen(true);
   //   gettingNote(e);
   // }
-useEffect(() => {
-  getNote();
-});
+  // useEffect(() => {
+  //   getNote();
+  // });
 
-notes.forEach(element => {
-  nameArr.push(
-    <div className="buttons-body" >
-      <NoteForm className="single" title={element.name}>
-        note id:
-        <p className="not-elem-id" >{element._id}</p>
-        note body:
-        <p className="note-elem-body" >{element.body}</p>
-      </NoteForm>
-    </div>
-  )
-})
+  //window.onload = getNote();
 
-  // notes.forEach(element => {
-  //   nameArr.push(
-  //     <div>
-  //       <button className="button" onClick={() => setOpen(true)} key={element.id}>{element.name}</button>
-  //       <NoteForm className="buttons-body" title="body buttons">
-  //         <p>{element._id}</p>
-  //         <p>{element.body}</p>
-  //       </NoteForm>
-  //     </div>
-  //   )
-  // })
+  // window.onload = App({
+  //   useEffect(() => {
+      //window.onload = getNote();
+  //   })
+  // };
+
+  //   return (
+  //     notes.forEach(element => {
+  //       nameArr.push(
+  //         <div className="buttons-body" >
+  //           <NoteForm className="single" title={element.name}>
+  //             note id:
+  //           <p className="not-elem-id" >{element._id}</p>
+  //           note body:
+  //           <p className="note-elem-body" >{element.body}</p>
+  //           </NoteForm>
+  //         </div>
+  //       )
+  //     })
+  //   );
+  // }
+
+
+
+  // function App() {
+  //   useEffect(() => {
+
+  //     console.log("pobrałem")
+  //   });}
+  //App();
+
+  //getNote();
+
+
+  notes.forEach(element => {
+    nameArr.push(
+      <div>
+        <button className="button" onClick={() => setOpen(true)} key={element.id}>{element.name}</button>
+        <ShowHideWrapper className="buttons-body" title="body buttons">
+          <p>{element._id}</p>
+          <p>{element.body}</p>
+        </ShowHideWrapper>
+      </div>
+    )
+  })
 
   return (
     <div>
-      {/* <button className="button" >
-        <span>
-          szalom
-        </span>
-      </button> */}
-      <NoteForm className="get-note" title="notes here" >
+      <ShowHideWrapper className="get-note" title="notes here" >
         <div className="body" >
-
-          <NoteForm title="update note" >
+          <ShowHideWrapper title="update note" >
             <UpdateNote
               noteUpdate={updateNote}
               onSubmitName={noteNameUpdate}
               onSubmitBody={noteBodyUpdate}
               onIdSubmit={noteId}
             />
-          </NoteForm>
-          <NoteForm className="" title="delete note" >
+          </ShowHideWrapper>
+          <ShowHideWrapper className="" title="delete note" >
             <DeleteNote
               noteDelete={deleteNote}
               onIdSubmit={noteId}
             />
-          </NoteForm>
-          <NoteForm className="notes" title="my notes">
+          </ShowHideWrapper>
+          <ShowHideWrapper className="notes" title="my notes" >
             {nameArr}
-          </NoteForm>
+          </ShowHideWrapper>
         </div>
-      </NoteForm>
+      </ShowHideWrapper>
     </div>
   );
 }
