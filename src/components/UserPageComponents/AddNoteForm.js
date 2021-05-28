@@ -1,34 +1,26 @@
 import React, { useState } from "react";
-import NoteForm from "./ShowHideWrapper";
+
+import ShowHideWrapper from "./ShowHideWrapper";
+import { addNote } from '../../api/notesService';
+
 import "../Style/loginScreen.css";
 
-export default function NoteButton({ onNameSubmit, onBodySubmit, addNote }) {
-  const [isOpen, setIsOpen] = useState(false);
+const AddNoteForm = () => {
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
 
-  const addingNote = (event) => {
-    event.preventDefault();
-    addNote(event);
+  const onAdding = async () => {
+    const response = await addNote(name, body);
+    if(response && response.status){
 
-  }
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-
-    onNameSubmit(name);
-    onBodySubmit(body);
+    }
+    return;
   };
 
   return (
     <div className="add-note">
-      {/* <button className="button" onClick={() => setIsOpen(true)}>
-        <span>
-          Make a Note
-        </span>
-      </button> */}
-      <NoteForm title="add note">
-        <form onChange={onSubmit}>
+      <ShowHideWrapper title="add note">
+        <form>
           <p>Name the Note</p>
           <input
             className="inputName"
@@ -39,7 +31,7 @@ export default function NoteButton({ onNameSubmit, onBodySubmit, addNote }) {
             onChange={(event) => setName(event.target.value)}
           />
         </form>
-        <form onChange={onSubmit}>
+        <form>
           <p>note body:</p>
           <input
             className="inputPassword"
@@ -50,8 +42,9 @@ export default function NoteButton({ onNameSubmit, onBodySubmit, addNote }) {
             onChange={(event) => setBody(event.target.value)}
           />
         </form>
-        <button className="save-button" onClick={addingNote}>save</button>
-      </NoteForm>
+        <button className="save-button" onClick={onAdding}>save</button>
+      </ShowHideWrapper>
     </div>
   );
 }
+export default AddNoteForm
