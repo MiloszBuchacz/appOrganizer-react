@@ -17,7 +17,7 @@ const UserPage = () => {
             <span>
               <Link to="/" style={{ textDecoration: "none" }}>
                 Main Page
-                </Link>
+              </Link>
             </span>
           </button>
         </nav>

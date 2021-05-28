@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { getNotes } from '../../api/notesService'
 import ShowHideWrapper from "./ShowHideWrapper";
-import UpdateNote from './UpdateNote';
-import DeleteNote from './DeleteNote';
 
 import '../Style/getNote.css';
 
@@ -12,7 +10,7 @@ const NotesView = () => {
   
   const nameArr = [];
 
-  useEffect(() => {
+  useEffect( async () => {
     setNotes(await getNotes());
   }, []);
 
@@ -20,7 +18,7 @@ const NotesView = () => {
   notes.forEach(element => {
     nameArr.push(
       <div>
-        <button className="button" onClick={() => setOpen(true)} key={element.id}>{element.name}</button>
+        <button className="button" key={element.id}>{element.name}</button>
         <ShowHideWrapper className="buttons-body" title="body buttons">
           <p>{element._id}</p>
           <p>{element.body}</p>
