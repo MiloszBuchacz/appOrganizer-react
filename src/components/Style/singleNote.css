@@ -1,0 +1,28 @@
+.note-content{
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+}
+
+.note-header{
+   flex-direction: row;
+   max-height: 50px;
+}
+
+.note-name-wrapper{
+    flex: 1;
+}
+
+.id{
+
+}
+
+.body{
+    margin-top: 10%;
+    height: 250px;
+    background-color: darkred;
+}
+.note-button{
+    flex: 1;
+}
+

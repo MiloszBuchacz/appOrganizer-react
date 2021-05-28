@@ -1,9 +1,6 @@
 .get-note{
 
 }
-.body{
-
-}
 button{
     border-radius: 4px;
     background-color: #ffffff;
@@ -25,11 +22,7 @@ button{
   position: relative;
 }
 
-.not-elem-id{
-  margin-bottom: 10%;
-  margin-left: 30%;
-  margin-top: 50%;
-}
+
 
 
 button span {

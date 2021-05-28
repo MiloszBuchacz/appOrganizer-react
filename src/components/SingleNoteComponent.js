@@ -1,18 +1,23 @@
 import React from 'react';
 
-import ShowHideWrapper from './UserPageComponents/ShowHideWrapper';
+import './Style/singleNote.css'
 
-const SingleNoteComponent = ({ _id, body, onDelete }) => {
+const SingleNoteComponent = ({ name, body, onDelete }) => {
 
 
     return (
-        <div>
-            <button onClick={onDelete}>
-                delete note SKURWYSYNU
+        <div className="note-content">
+            <div className="note-header">
+                <div className="note-name-wrapper">
+                    <p className="id">{name}</p>
+                </div>
+                <button onClick={onDelete} className="note-button">
+                delete
             </button>
-            <p>{_id}</p>
-            <p>{body}</p>
-        </div>
+            </div>
+                <p className="body">{body}</p>
+            </div>
+
     )
 }
 

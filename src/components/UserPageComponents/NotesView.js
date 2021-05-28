@@ -28,7 +28,7 @@ const NotesView = () => {
           {notes && notes.length > 0 && notes.map(note => {
             return (
               <>
-                <SingleNoteComponent key={note._id} _id={note._id} body={note.body} onDelete={() => onDelete(note._id)} />
+                <SingleNoteComponent key={note._id} name={note.name} body={note.body} onDelete={() => onDelete(note._id)} />
               </>)
           })}
           <ShowHideWrapper className="notes" title="my notes">
