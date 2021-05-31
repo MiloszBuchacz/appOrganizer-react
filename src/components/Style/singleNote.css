@@ -2,6 +2,10 @@
     display: flex;
     width: 500px;
     flex-direction: column;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-evenly;
 }
 
 .note-header{
@@ -13,16 +17,28 @@
     flex: 1;
 }
 
-.id{
-
+.name{
+    font-size: large;
+    margin-top: -8%;
+}
+.note-body{
+    font-size: smaller;
+    margin-top: 5%;
+    resize: none;
+    border: none;
+    background-color: gainsboro;
 }
 
-.body{
+.single-body{
     margin-top: 10%;
     height: 250px;
-    background-color: darkred;
+    background-color: gainsboro;
+    border: thin solid #3527ff;
+    border-radius: 3%;
 }
 .note-button{
     flex: 1;
+    margin-left: 80%;
+    margin-top: 2%;
 }
 

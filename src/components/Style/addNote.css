@@ -1,18 +1,52 @@
 
-input {
+.inputName{
+    /* margin-bottom: 7%; */
+    margin-top: 5%;
     padding:10px; 
     border:2px solid rgb(255, 255, 255); 
     -webkit-border-radius: 5px;
     border-radius: 15px;
     outline: none;
     transition: 0.5s;
-}
-.inputName{
-    margin-bottom: 7%;
-    margin-top: -60px;
+
 }
 .inputPassword{
     margin-bottom: 2%;
+    resize: none;
+    margin-top: 18%;
+    width: 380px;
+    height: 280px;
+    padding:10px; 
+    border:2px solid rgb(255, 255, 255); 
+    -webkit-border-radius: 5px;
+    border-radius: 15px;
+    outline: none;
+    transition: 0.5s;
+
+}
+
+.user-page button{
+    margin-top: 0%;
+    margin-left: 0%;
+}
+
+.main-page button{
+    margin-top: 0%;
+    margin-left: 0%;
+}
+
+.save-button{
+    position: fixed;
+    top: 14%;
+    left: 38%;
+}
+
+.add-body{
+    margin-top: 10%;
+    height: 500px;
+    background-color: gainsboro;
+    border: thin solid #3527ff;
+    border-radius: 3%;
 }
 h1{
     font-family: monospace;
@@ -22,10 +56,7 @@ h1{
 input:focus {
     border-color:#3527ff;
 }
-p{
-    margin-top: -4%;
-    font-family: monospace;
-}
+
 form{
     margin-top: 10%;
 }
@@ -91,7 +122,13 @@ form{
     opacity: 1;
     right: 0;
   }
-.body{
+
+  a:link { text-decoration: none; }
+  a:visited { text-decoration: none; }
+  a:hover { text-decoration: none; }
+  a:active { text-decoration: none; }
+
+.add-note{
     animation: fadeInAnimation ease 1.5s;
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
@@ -104,13 +141,3 @@ form{
                 opacity: 1;
             }
 }
-
-  a:link { text-decoration: none; }
-  a:visited { text-decoration: none; }
-  a:hover { text-decoration: none; }
-  a:active { text-decoration: none; }
-
-/* .topBox{
-    background-color: rgb(0, 0, 0);
-    height: 60px;
-} */

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import ShowHideWrapper from "./ShowHideWrapper";
 import { addNote } from '../../api/notesService';
+import { Link } from 'react-router-dom';
 
-import "../Style/loginScreen.css";
+import "../Style/addNote.css";
 
 const AddNoteForm = () => {
   const [name, setName] = useState("");
@@ -11,7 +11,7 @@ const AddNoteForm = () => {
 
   const onAdding = async () => {
     const response = await addNote(name, body);
-    if(response && response.status){
+    if (response && response.status) {
 
     }
     return;
@@ -19,32 +19,77 @@ const AddNoteForm = () => {
 
   return (
     <div className="add-note">
-      <ShowHideWrapper title="add note">
-        <form>
-          <p>Name the Note</p>
-          <input
-            className="inputName"
-            placeholder="Name the Note"
-            className="name-input"
-            type="text"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-        </form>
-        <form>
-          <p>note body:</p>
-          <input
+      <button className="main-page button">
+        <span>
+          <Link to='/'>main page</Link>
+        </span>
+      </button>
+      <button className="user-page button">
+        <span>
+          <Link to='/user'>user panel</Link>
+        </span>
+      </button>
+      <div className="note-content">
+        <div className="add-body">
+          <div className="note-header">
+            <div className="note-name-wrapper">
+              <input
+                className="inputName"
+                placeholder="Title"
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+              <button className="save-button" onClick={onAdding}><span>save</span></button>
+            </div>
+          </div>
+          <textarea
+            rows="4"
+            cols="50"
             className="inputPassword"
             placeholder="enter Note"
-            className="body"
             type="text"
             value={body}
             onChange={(event) => setBody(event.target.value)}
           />
-        </form>
-        <button className="save-button" onClick={onAdding}>save</button>
-      </ShowHideWrapper>
+        </div>
+      </div>
+
     </div>
   );
 }
 export default AddNoteForm
+
+
+
+
+
+
+
+
+
+{/* <ShowHideWrapper title="add note">
+<form>
+    <p>Name the Note</p>
+    <input
+      className="inputName"
+      placeholder="Name the Note"
+      className="name-input"
+      type="text"
+      value={name}
+      onChange={(event) => setName(event.target.value)}
+    />
+  </form>
+  <form>
+    <p>note body:</p>
+    <input
+      className="inputPassword"
+      placeholder="enter Note"
+      className="body"
+      type="text"
+      value={body}
+      onChange={(event) => setBody(event.target.value)}
+    />
+  </form>
+  <button className="save-button" onClick={onAdding}>save</button>
+</ShowHideWrapper> */}
