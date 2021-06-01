@@ -4,7 +4,6 @@ import './Style/singleNote.css'
 
 const SingleNoteComponent = ({ name, body, onDelete }) => {
 
-
     return (
         <div className="note-content">
             <div className="single-body">
@@ -17,6 +16,7 @@ const SingleNoteComponent = ({ name, body, onDelete }) => {
                     </div>
                 </div>
                 <textarea
+                    readOnly
                     rows="10"
                     cols="50"
                     className="note-body">

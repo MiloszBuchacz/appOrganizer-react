@@ -45,7 +45,7 @@ class Register extends Component {
         <form onSubmit={this.onFormSubmit}>
           <p>Username</p>
           <input
-            className="inputName"
+            className="nameInput"
             type="text"
             value={this.state.username}
             placeholder="Enter your name"
@@ -53,7 +53,7 @@ class Register extends Component {
           />
           <p>Password</p>
           <input
-            className="inputPassword"
+            className="passwordInput"
             type="password"
             value={this.state.password}
             placeholder="Enter password"

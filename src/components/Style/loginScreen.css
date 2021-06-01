@@ -7,11 +7,11 @@ input {
     outline: none;
     transition: 0.5s;
 }
-.inputName{
+.nameInput{
     margin-bottom: 7%;
     margin-top: -60px;
 }
-.inputPassword{
+.passwordInput{
     margin-bottom: 2%;
 }
 h1{

@@ -41,18 +41,18 @@ export const getNotes = async () => {
     }
 }
 
-// export const updateNote = async () => {
-//     try {
-//         await axios.put(
-//             `http://localhost:8080/api/notes/${this.state.id}`,
-//             {
-//                 name: this.state.name, body: this.state.body
-//             }, {
-//             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-//         });
-//         console.log('duppka')
-//     }
-//     catch (error) {
-//         console.log(error);
-//     }
-// }
+export const updateNote = async (noteId, name, body) => {
+    try {
+        await axios.put(
+            `http://localhost:8080/api/notes/${noteId}`,
+            {
+                name, body
+            }, {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        });
+        console.log('duppka')
+    }
+    catch (error) {
+        console.log(error);
+    }
+}

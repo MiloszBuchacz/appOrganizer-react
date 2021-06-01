@@ -59,37 +59,3 @@ const AddNoteForm = () => {
   );
 }
 export default AddNoteForm
-
-
-
-
-
-
-
-
-
-{/* <ShowHideWrapper title="add note">
-<form>
-    <p>Name the Note</p>
-    <input
-      className="inputName"
-      placeholder="Name the Note"
-      className="name-input"
-      type="text"
-      value={name}
-      onChange={(event) => setName(event.target.value)}
-    />
-  </form>
-  <form>
-    <p>note body:</p>
-    <input
-      className="inputPassword"
-      placeholder="enter Note"
-      className="body"
-      type="text"
-      value={body}
-      onChange={(event) => setBody(event.target.value)}
-    />
-  </form>
-  <button className="save-button" onClick={onAdding}>save</button>
-</ShowHideWrapper> */}

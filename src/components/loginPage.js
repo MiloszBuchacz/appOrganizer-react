@@ -51,7 +51,7 @@ class Login extends Component {
         <form onSubmit={this.formSubmit}>
           <p>Username</p>
           <input
-            className="inputName"
+            className="nameInput"
             type="text"
             value={this.state.username}
             placeholder="Enter your name"
@@ -59,7 +59,7 @@ class Login extends Component {
           />
           <p>Password</p>
           <input
-            className="inputPassword"
+            className="passwordInput"
             type="password"
             value={this.state.password}
             placeholder="Enter password"
