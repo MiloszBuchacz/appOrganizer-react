@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import { deleteNote, getNotes, updateNote } from '../../api/notesService'
+import { deleteNote, getNotes, updateNote} from '../../api/notesService';
 import { Link } from 'react-router-dom';
-import ShowHideWrapper from "./ShowHideWrapper";
 import SingleNoteComponent from '../SingleNoteComponent';
 
 import '../Style/getNote.css';
 
 const NotesView = () => {
   const [notes, setNotes] = useState([]);
+  const [body, setBody] = useState("");
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -26,7 +26,7 @@ const NotesView = () => {
   }
 
   const onUpdate = async (noteId, name, body) => {
-    const response = await updateNote(noteId, name, body);
+    const response = await updateNote(noteId, body, name);
     console.log(response);
   }
 
@@ -45,9 +45,18 @@ const NotesView = () => {
       {/* <ShowHideWrapper className="get-note" title="notes here"> */}
         <div className="body">
           {notes && notes.length > 0 && notes.map(note => {
+            // console.log(note._id);
             return (
               <>
-                <SingleNoteComponent name={note.name} body={note.body} onUpdate={() => onUpdate(note._id)}  onDelete={() => onDelete(note._id)} />
+                <SingleNoteComponent
+                  name={note.name}
+                  body={note.body}
+                  onUpdate={onUpdate}
+                  id={note._id}
+                  // onBodyUpdate={(e) => setBody(e)}
+                  
+                  // bodyUpdated={(bodyUpdate) => setBody(bodyUpdate)}
+                  onDelete={() => onDelete(note._id)} />
               </>)
           })}
         </div>

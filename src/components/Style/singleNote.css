@@ -29,6 +29,19 @@
     background-color: gainsboro;
 }
 
+.edit-button{
+    /* margin-top: 2%; */
+
+}
+
+.service-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 12%;
+    margin-left: 12%;
+    margin-top: 1%;
+}
+
 .single-body{
     margin-top: 10%;
     height: 250px;
