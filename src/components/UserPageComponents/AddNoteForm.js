@@ -1,51 +1,61 @@
 import React, { useState } from "react";
-import NoteForm from "./NoteForm";
-import "../Style/addNoteForm.css";
 
-export default function NoteButton({ onNameSubmit, onBodySubmit, addNote }) {
-  const [isOpen, setIsOpen] = useState(false);
+import { addNote } from '../../api/notesService';
+import { Link } from 'react-router-dom';
+
+import "../Style/addNote.css";
+
+const AddNoteForm = () => {
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
 
-  const addingNote = (event) => {
-    event.preventDefault();
-    addNote(event);
+  const onAdding = async () => {
+    const response = await addNote(name, body);
+    if (response && response.status) {
 
-  }
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-
-    onNameSubmit(name);
-    onBodySubmit(body);
+    }
+    return;
   };
 
   return (
     <div className="add-note">
-      <button onClick={() => setIsOpen(true)}>
-        Make a Note
+      <button className="main-page button">
+        <span>
+          <Link to='/'>main page</Link>
+        </span>
       </button>
-      <NoteForm open={isOpen} onClose={() => setIsOpen(false)}>
-        <form onChange={onSubmit}>
-          <input
-            placeholder="Name the Note"
-            className="name-input"
-            type="text"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-        </form>
-        <form onChange={onSubmit}>
-          <input
+      <button className="user-page button">
+        <span>
+          <Link to='/user'>user panel</Link>
+        </span>
+      </button>
+      <div className="note-content">
+        <div className="add-body">
+          <div className="note-header">
+            <div className="note-name-wrapper">
+              <input
+                className="inputName"
+                placeholder="Title"
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+              <button className="save-button" onClick={onAdding}><span>save</span></button>
+            </div>
+          </div>
+          <textarea
+            rows="4"
+            cols="50"
+            className="inputPassword"
             placeholder="enter Note"
-            className="body"
             type="text"
             value={body}
             onChange={(event) => setBody(event.target.value)}
           />
-        </form>
-        <button className="save-button" onClick={addingNote}>save</button>
-      </NoteForm>
+        </div>
+      </div>
+
     </div>
   );
 }
+export default AddNoteForm

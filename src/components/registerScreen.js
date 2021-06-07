@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import "./Style/registerScreen.css";
+import "./Style/loginScreen.css";
 import { Link } from "react-router-dom";
 
 class Register extends Component {
@@ -14,40 +14,46 @@ class Register extends Component {
       password: "",
     };
   }
-  
+
   async onFormSubmit(e) {
     e.preventDefault();
     try {
       const { data } = await Axios.post(
         "http://localhost:8080/api/auth/signup",
         { username: this.state.username, password: this.state.password }
-        );
-        console.log(data);
-        this.props.history.push("/user");
-      } catch (err) {
-        console.log(`Axios request failed: ${err}`);
-      }
+      );
+      console.log(data);
+      this.props.history.push("/user");
+    } catch (err) {
+      console.log(`Axios request failed: ${err}`);
     }
-  
+  }
+
   render() {
     return (
-      <div className="Register">
-        <button className="main-page button">
-          <Link to="/" style={{ textDecoration: "none" }}>
-            Main Page
-          </Link>
-        </button>
+      <div className="body">
+        <nav>
+          <button className="main-page button">
+            <span>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                Main Page
+                </Link>
+            </span>
+          </button>
+        </nav>
         <h1>Welcome {this.state.username}</h1>
         <form onSubmit={this.onFormSubmit}>
           <p>Username</p>
           <input
+            className="nameInput"
             type="text"
             value={this.state.username}
             placeholder="Enter your name"
-            onChange={(e) => this.setState({ username: e.target.value })}
-            />
+            onInput={(e) => this.setState({ username: e.target.value })}
+          />
           <p>Password</p>
           <input
+            className="passwordInput"
             type="password"
             value={this.state.password}
             placeholder="Enter password"
@@ -55,7 +61,9 @@ class Register extends Component {
           />
           <div>
             <button className="button" type="submit">
-              Submit
+              <span>
+                Submit
+              </span>
             </button>
           </div>
         </form>

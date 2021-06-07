@@ -5,6 +5,8 @@ import Register from './components/registerScreen';
 import Home from './components/Home';
 import Login from './components/loginPage';
 import UserPage from './components/UserPage';
+import Notes from './pages/Notes/Notes';
+import AddNote from './components/UserPageComponents/AddNoteForm';
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
       <Route exact path='/user' component={UserPage} />
       <Route exact path='/Login' component={Login} />
       <Route exact path='/' component={Home} />
+      <Route exact path='/notes/add' component={AddNote} />
+      <Route exact path='/notes' component={Notes} />
     </div>
   );
 }

@@ -5,20 +5,18 @@ export default function UpdateNote({ noteUpdate, onSubmitBody, onSubmitName, onI
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
 
-  console.log(noteId, name, body);
-
   const submitForm = (event) => {
     event.preventDefault();
 
     onSubmitName(name);
     onSubmitBody(body);
     onIdSubmit(noteId);
-    console.log(onIdSubmit);
+    console.log(onIdSubmit)
 
   }
 
   return (
-    <div>
+    <div className="body">
       <form onChange={submitForm}>
         copy note ID here:
       <input
