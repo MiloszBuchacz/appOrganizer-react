@@ -11,9 +11,7 @@ const AddNoteForm = () => {
 
   const onAdding = async () => {
     const response = await addNote(name, body);
-    if (response && response.status) {
-
-    }
+    if (response && response.status) {}
     return;
   };
 
