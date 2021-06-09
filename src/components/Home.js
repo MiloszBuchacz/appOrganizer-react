@@ -15,16 +15,6 @@ function Home() {
             after registration, you would be able to make note
             <br />
             im currently working on sending notes to other users, it can be used for example as a shopping list
-            <br />
-            <br />
-            <br />
-
-            <br />
-            <br />
-            <br />
-            <br />
-
-
         </div>
 
     )
