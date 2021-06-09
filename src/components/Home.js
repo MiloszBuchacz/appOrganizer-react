@@ -7,22 +7,23 @@ function Home() {
 
         <div className="body">
 
-                <NavBar />
-                <h1>hay {localStorage.getItem("name")}</h1>
+            <NavBar />
+            <h1>Hay {localStorage.getItem("name")}</h1>
             this page is simple note organizer
             <br />
-                <br />
-            
             <br />
-                <br />
-                <br />
-                <br />
-            
+            after registration, you would be able to make note
             <br />
-                <br />
-                <br />
-                <br />
-            
+            im currently working on sending notes to other users, it can be used for example as a shopping list
+            <br />
+            <br />
+            <br />
+
+            <br />
+            <br />
+            <br />
+            <br />
+
 
         </div>
 

@@ -17,7 +17,6 @@ const SingleNoteComponent = ({ name, body, onDelete, onUpdate, id }) => {
         setEdit(false);
     }
 
-    
     if (edit === true) {
         return (
             <div className="note-content">
