@@ -29,11 +29,6 @@
     background-color: gainsboro;
 }
 
-.edit-button{
-    /* margin-top: 2%; */
-
-}
-
 .service-buttons{
     display: flex;
     justify-content: space-evenly;

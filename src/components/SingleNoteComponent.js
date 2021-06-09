@@ -6,8 +6,6 @@ const SingleNoteComponent = ({ name, body, onDelete, onUpdate, id }) => {
     const [edit, setEdit] = useState(false);
     const [bodyUpdate, setBodyupdate] = useState("");
 
-    // setBodyupdate(body)
-
         useEffect(() => {
             setBodyupdate(body);
         }, [])

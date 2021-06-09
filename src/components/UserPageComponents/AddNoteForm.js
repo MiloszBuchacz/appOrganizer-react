@@ -54,7 +54,6 @@ const AddNoteForm = () => {
           />
         </div>
       </div>
-
     </div>
   );
 }
