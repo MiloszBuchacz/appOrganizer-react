@@ -5,7 +5,7 @@ import Register from './components/registerScreen';
 import Home from './components/Home';
 import Login from './components/loginPage';
 import UserPage from './components/UserPage';
-import Notes from './pages/Notes/Notes';
+import Notes from './components/Note';
 import AddNote from './components/UserPageComponents/AddNoteForm';
 
 

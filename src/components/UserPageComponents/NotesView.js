@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { deleteNote, getNotes, updateNote} from '../../api/notesService';
+import { deleteNote, getNotes, updateNote } from '../../api/notesService';
 import { Link } from 'react-router-dom';
 import SingleNoteComponent from '../SingleNoteComponent';
 
@@ -42,25 +42,19 @@ const NotesView = () => {
           <Link to='/user'>user panel</Link>
         </span>
       </button>
-      {/* <ShowHideWrapper className="get-note" title="notes here"> */}
-        <div className="body">
-          {notes && notes.length > 0 && notes.map(note => {
-            // console.log(note._id);
-            return (
-              <>
-                <SingleNoteComponent
-                  name={note.name}
-                  body={note.body}
-                  onUpdate={onUpdate}
-                  id={note._id}
-                  // onBodyUpdate={(e) => setBody(e)}
-                  
-                  // bodyUpdated={(bodyUpdate) => setBody(bodyUpdate)}
-                  onDelete={() => onDelete(note._id)} />
-              </>)
-          })}
-        </div>
-      {/* </ShowHideWrapper> */}
+      <div className="body">
+        {notes && notes.length > 0 && notes.map(note => {
+          return (
+            <>
+              <SingleNoteComponent
+                name={note.name}
+                body={note.body}
+                onUpdate={onUpdate}
+                id={note._id}
+                onDelete={() => onDelete(note._id)} />
+            </>)
+        })}
+      </div>
     </div>
   );
 }

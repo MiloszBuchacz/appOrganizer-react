@@ -12,7 +12,6 @@ export default function UpdateNote({ noteUpdate, onSubmitBody, onSubmitName, onI
     onSubmitBody(body);
     onIdSubmit(noteId);
     console.log(onIdSubmit)
-
   }
 
   return (
