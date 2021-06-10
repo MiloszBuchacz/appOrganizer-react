@@ -4,6 +4,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
 }
 body{
   background: linear-gradient(-45deg, #8f85ff, #807efc, #5b50ff, #3e30ff);
@@ -21,6 +23,9 @@ body{
     background-position: 0% 50%;
   }
 }
+
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

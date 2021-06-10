@@ -20,11 +20,12 @@ class Login extends Component {
     try {
       const { data } = await axios.post(
         "http://localhost:8080/api/auth/signin",
-        { username: this.state.username, password: this.state.password }
+        { userName: this.state.username, password: this.state.password }
       );
       console.log(data);
       if (data && data.accessToken) {
         localStorage.setItem("token", data.accessToken);
+        localStorage.setItem("id", data.id);
         localStorage.setItem("name", this.state.username);
       }
       if (data.accessToken === localStorage.getItem("token")) {
