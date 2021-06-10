@@ -1,28 +1,23 @@
 import React, { useState } from "react";
-import Axios from "axios";
-import "./Style/loginScreen.css";
+
 import { useHistory, Link } from "react-router-dom";
+
+import addUser from '../api/userService';
+import "./Style/loginScreen.css";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("email jest taki");
   const [password, setPassword] = useState("");
   // const [confirmPassword, setConfirmPassword] = useState("");
 
   const history = useHistory();
 
-  const onFormSubmit = async (e) => {
+  const onAddUser = async (e) => {
     e.preventDefault();
-    try {
-      const { data } = await Axios.post(
-        "http://localhost:8080/api/auth/signup",
-        { userName, email, password }
-      );
-      console.log(data);
-      history.push("/user");
-    } catch (err) {
-      console.log(`Axios request failed: ${err}`);
-    }
+    await addUser(userName, email, password);
+    console.log(userName, password);
+    history.push("/login");
   }
 
   return (
@@ -37,7 +32,7 @@ const Register = () => {
         </button>
       </nav>
       <h1>Welcome {userName}</h1>
-      <form onSubmit={onFormSubmit}>
+      <form>
         <p>Username</p>
         <input
           className="nameInput"
@@ -55,7 +50,7 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div>
-          <button className="button" type="submit">
+          <button className="button" type="submit" onClick={onAddUser}>
             <span>
               Submit
               </span>

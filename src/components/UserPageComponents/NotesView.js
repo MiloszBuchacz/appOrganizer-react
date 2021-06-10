@@ -44,15 +44,18 @@ const NotesView = () => {
       </button>
       <div className="body">
         {notes && notes.length > 0 && notes.map(note => {
-          return (
-            <>
-              <SingleNoteComponent
-                name={note.name}
-                body={note.body}
-                onUpdate={onUpdate}
-                id={note._id}
-                onDelete={() => onDelete(note._id)} />
-            </>)
+          if(note._userId === localStorage.getItem("id")){
+            return (
+              <>
+                <SingleNoteComponent
+                  name={note.name}
+                  body={note.body}
+                  onUpdate={onUpdate}
+                  id={note._id}
+                  onDelete={() => onDelete(note._id)} />
+              </>)
+          }
+          
         })}
       </div>
     </div>
